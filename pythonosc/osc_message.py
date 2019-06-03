@@ -2,6 +2,7 @@
 
 import logging
 
+import pythonosc
 from pythonosc.parsing import osc_types
 from typing import List, Iterator, Any
 
@@ -86,7 +87,7 @@ class OscMessage(object):
     @staticmethod
     def dgram_is_message(dgram: bytes) -> bool:
         """Returns whether this datagram starts as an OSC message."""
-        return dgram.startswith(b'/')
+        return dgram.startswith(pythonosc.OSC_DGRAM_STARTS_WITH)
 
     @property
     def size(self) -> int:
